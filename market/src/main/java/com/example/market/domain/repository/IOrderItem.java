@@ -1,5 +1,5 @@
 package com.example.market.domain.repository;
 
-public interface IOrderItemDTO {
+public interface IOrderItem {
     
 }
