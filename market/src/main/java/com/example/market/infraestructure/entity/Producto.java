@@ -17,7 +17,7 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private Double precio;
-    private Long stock;
+    private Long cantidad;
 
     
 
@@ -25,11 +25,11 @@ public class Producto {
     }
 
 
-    public Producto(String nombre, String descripcion, Double precio, Long stock) {
+    public Producto(String nombre, String descripcion, Double precio, Long cantidad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.stock = stock;
+        this.cantidad = cantidad;
     }
 
 
@@ -65,12 +65,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public Long getStock() {
-        return stock;
+    public Long getCantidad() {
+        return cantidad;
     }
 
-    public void setStock(Long stock) {
-        this.stock = stock;
+    public void setCantidad(Long cantidad) {
+        this.cantidad = cantidad;
     }
     
 }
