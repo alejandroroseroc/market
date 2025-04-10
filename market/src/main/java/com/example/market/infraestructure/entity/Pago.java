@@ -38,6 +38,9 @@ public class Pago {
         this.orden = orden;
     }
 
+    public Pago() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -49,6 +52,8 @@ public class Pago {
     public Double getMonto() {
         return monto;
     }
+
+   
 
     public String getMetodo() {
         return metodo;
