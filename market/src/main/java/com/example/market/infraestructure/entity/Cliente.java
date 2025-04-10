@@ -1,14 +1,10 @@
 package com.example.market.infraestructure.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
-
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +12,22 @@ public class Cliente {
     private String nombre;
     private String email;
     private String direccion;
+    private String telefono;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Orden> ordenes;
+
+    public Cliente() {
+    }
+
+    public Cliente(String nombre, String email, String direccion, String telefono) {
+        this.nombre = nombre;
+        this.email = email;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+
+    // Getters y setters
 
     public Long getId() {
         return id;
@@ -57,16 +69,11 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    private String telefono;
-
-    public Cliente() {
+    public List<Orden> getOrdenes() {
+        return ordenes;
     }
 
-    public Cliente(String nombre, String email, String direccion, String telefono) {
-        this.nombre = nombre;
-        this.email = email;
-        this.direccion = direccion;
-        this.telefono = telefono;
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
     }
-
 }
