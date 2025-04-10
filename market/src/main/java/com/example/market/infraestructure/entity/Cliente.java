@@ -1,19 +1,7 @@
 package com.example.market.infraestructure.entity;
 
-<<<<<<< HEAD
 import jakarta.persistence.*;
 import java.util.List;
-=======
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
->>>>>>> e22714e59cbf223c241fae66c949365898a11221
 
 @Entity
 @Table(name = "clientes")
@@ -88,8 +76,4 @@ public class Cliente {
     public void setOrdenes(List<Orden> ordenes) {
         this.ordenes = ordenes;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e22714e59cbf223c241fae66c949365898a11221
