@@ -1,10 +1,10 @@
 package com.example.market.domain.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class OrderDTO {
     private Long id;
-    private LocalDateTime date;
+    private LocalDate date;
     private Double total;
     private String status;
     private Long clientId;
@@ -17,11 +17,11 @@ public class OrderDTO {
         this.id = id;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

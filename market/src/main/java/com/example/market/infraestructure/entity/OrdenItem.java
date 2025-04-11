@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "orden_items")
+@Table(name = "ordenitems")
 public class OrdenItem {
 
     @Id
@@ -16,7 +16,7 @@ public class OrdenItem {
     private Long id;
 
     private Integer cantidad;
-    private Double precioUnitario;
+    private Double precio_unitario;
 
     @ManyToOne
     @JoinColumn(name = "producto_id", nullable = false)
@@ -28,9 +28,9 @@ public class OrdenItem {
 
     public OrdenItem() {}
 
-    public OrdenItem(Integer cantidad, Double precioUnitario, Producto producto, Orden orden) {
+    public OrdenItem(Integer cantidad, Double precio_unitario, Producto producto, Orden orden) {
         this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
+        this.precio_unitario = precio_unitario;
         this.producto = producto;
         this.orden = orden;
     }
@@ -51,13 +51,7 @@ public class OrdenItem {
         this.cantidad = cantidad;
     }
 
-    public Double getPrecioUnitario() {
-        return precioUnitario;
-    }
-
-    public void setPrecioUnitario(Double precioUnitario) {
-        this.precioUnitario = precioUnitario;
-    }
+   
 
     public Producto getProducto() {
         return producto;
@@ -73,6 +67,14 @@ public class OrdenItem {
 
     public void setOrden(Orden orden) {
         this.orden = orden;
+    }
+
+    public Double getPrecio_unitario() {
+        return precio_unitario;
+    }
+
+    public void setPrecio_unitario(Double precio_unitario) {
+        this.precio_unitario = precio_unitario;
     }
     
 }
