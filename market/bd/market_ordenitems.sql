@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `ordenitems`;
 CREATE TABLE `ordenitems` (
   `id` int NOT NULL AUTO_INCREMENT,
   `cantidad` int NOT NULL,
-  `precioUnitario` decimal(10,2) NOT NULL,
+  `precio_unitario` decimal(10,2) NOT NULL,
   `producto_id` int NOT NULL,
   `orden_id` int NOT NULL,
   PRIMARY KEY (`id`),
