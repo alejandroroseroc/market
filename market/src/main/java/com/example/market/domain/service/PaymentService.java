@@ -13,29 +13,29 @@ import com.example.market.domain.repository.IPayment;
 public class PaymentService {
 
     @Autowired
-    private IPayment repository;
+    private IPayment iPayment;
 
     public List<PaymentDTO> obtenerTodos() {
-        return repository.getAll();
+        return iPayment.getAll();
     }
 
     public Optional<PaymentDTO> obtenerPorId(Long id) {
-        return repository.getById(id);
+        return iPayment.getById(id);
     }
 
     public PaymentDTO guardar(PaymentDTO dto) {
-        return repository.save(dto);
+        return iPayment.save(dto);
     }
 
     public PaymentDTO actualizar(Long id, PaymentDTO dto) {
-        return repository.update(id, dto);
+        return iPayment.update(id, dto);
     }
 
     public boolean eliminar(Long id) {
-        return repository.delete(id);
+        return iPayment.delete(id);
     }
-/*/
-    public List<PaymentDTO> obtenerPorOrdenId(Long ordenId) {
-        return repository.getByOrderId(ordenId);
-    }/** */
+
+    public List<PaymentDTO> obtenerPorOrden(Long ordenId) {
+        return iPayment.getByOrderId(ordenId);
+    }
 }
