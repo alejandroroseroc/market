@@ -32,7 +32,7 @@ public class OrderDTO {
     public void setTotal(Double total) {
         this.total = total;
     }
-
+    
     public String getStatus() {
         return status;
     }

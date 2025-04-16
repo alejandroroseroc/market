@@ -2,7 +2,7 @@ package com.example.market.domain.dto;
 
 import java.time.LocalDateTime;
 
-public class PayDTO {
+public class PaymentDTO {
 
     private Long id;
     private LocalDateTime paymentDate;

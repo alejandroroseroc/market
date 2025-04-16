@@ -25,7 +25,7 @@ public class Pago {
 
     @ManyToOne
     @JoinColumn(name = "orden_id")
-    private Orden orden;
+    private Orden orden; 
 
     public Pago(String estado, LocalDateTime fechaPago, Long id, String metodo, Double monto, Orden orden) {
 
