@@ -55,9 +55,9 @@ public class PaymentController {
             return ResponseEntity.notFound().build();
         }
     }
-/*/
+
     @GetMapping("/orden/{ordenId}")
     public List<PaymentDTO> obtenerPorOrdenId(@PathVariable Long ordenId) {
-        return service.obtenerPorOrdenId(ordenId);
-    }/*/
+        return service.obtenerPorOrden(ordenId);
+    }
 }

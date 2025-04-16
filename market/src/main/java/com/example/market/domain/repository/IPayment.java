@@ -11,4 +11,5 @@ public interface IPayment {
     PaymentDTO save(PaymentDTO paymentDTO);
     PaymentDTO update(Long id, PaymentDTO paymentDTO);
     boolean delete(Long id);
+    List<PaymentDTO> getByOrderId(Long orderId);
 }

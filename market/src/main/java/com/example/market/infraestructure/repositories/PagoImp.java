@@ -59,10 +59,9 @@ public class PagoImp implements IPayment {
 
     }
 
-/*/
+
     @Override
     public List<PaymentDTO> getByOrderId(Long orderId) {
-        List<Pago> pagos = pagoRepository.findByOrdenId(orderId);
-        return pagoMapper.toPaymentsDTO(pagos);
-    }/* */
+        return pagoMapper.toPaymentsDTO(pagoRepository.findByOrdenId(orderId));
+    }
 }
