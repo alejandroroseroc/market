@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `pagos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pagos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `fechaPago` datetime NOT NULL,
+  `fecha_pago` datetime NOT NULL,
   `monto` decimal(10,2) NOT NULL,
   `metodo` varchar(50) NOT NULL,
   `estado` enum('aprobado','rechazado') NOT NULL,
