@@ -6,7 +6,11 @@ public class OrderItemDTO {
     private Double unitPrice;
     private Long productId;
     private Long orderId;
+    private String productName;
     
+    public String getProductName() { return productName; }
+    public void setProductName(String productName) { this.productName = productName; }
+
     public Long getId() {
         return id;
     }
