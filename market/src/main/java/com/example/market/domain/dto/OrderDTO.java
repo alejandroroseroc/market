@@ -8,6 +8,15 @@ public class OrderDTO {
     private Double total;
     private String status;
     private Long clientId;
+    private ClientDTO clientDTO;
+
+    public ClientDTO getClientDTO() {
+        return clientDTO;
+    }
+
+    public void setClientDTO(ClientDTO clientDTO) {
+        this.clientDTO = clientDTO;
+    }
 
     public Long getId() {
         return id;

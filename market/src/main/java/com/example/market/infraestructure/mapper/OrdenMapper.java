@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 import com.example.market.domain.dto.OrderDTO;
 import com.example.market.infraestructure.entity.Orden;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = { ClienteMapper.class })
 public interface OrdenMapper {
 
     @Mappings({
@@ -19,10 +19,13 @@ public interface OrdenMapper {
         @Mapping(source = "estado", target = "status"),
         @Mapping(source = "cliente.id", target = "clientId"),
         @Mapping(source = "total", target = "total"),
+        @Mapping(source = "cliente", target = "clientDTO"),
     })
     OrderDTO toOrderDTO(Orden orden);
     List<OrderDTO> toOrdersDTO(List<Orden> ordenes);
 
     @InheritInverseConfiguration
     Orden toOrden(OrderDTO orderDTO);
+
+    List<Orden> toOrdenes(List<OrderDTO> ordersDTO);
 }
