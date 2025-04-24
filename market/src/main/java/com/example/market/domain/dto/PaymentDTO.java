@@ -10,6 +10,11 @@ public class PaymentDTO {
     private String method;
     private String status;
     private Long orderId;
+    private OrderDTO orderDTO;
+
+    public Long getOrderId() {
+        return orderId;
+    }
 
     public Long getId() {
         return id;
@@ -31,8 +36,8 @@ public class PaymentDTO {
         return status;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public OrderDTO getOrderDTO() {
+        return orderDTO;
     }
 
     public void setId(Long id) {
@@ -55,9 +60,13 @@ public class PaymentDTO {
         this.status = status;
     }
 
+    public void setOrderDTO(OrderDTO orderDTO) {
+        this.orderDTO = orderDTO;
+    }
+
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
-
+    
     
 }
