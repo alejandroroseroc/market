@@ -1,7 +1,6 @@
 package com.example.market.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,40 +17,46 @@ import com.example.market.domain.dto.OrderItemDTO;
 import com.example.market.domain.service.OrderItemService;
 
 @RestController
-@RequestMapping("/orden-items")
+@RequestMapping("/ordenes/{ordenId}/items")
 public class OrderItemController {
 
     @Autowired
     private OrderItemService service;
 
+    // GET /ordenes/{ordenId}/items
     @GetMapping
-    public List<OrderItemDTO> obtenerTodos() {
-        return service.obtenerTodo();
+    public List<OrderItemDTO> obtenerPorOrden(@PathVariable Long ordenId) {
+        return service.obtenerPorOrden(ordenId);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<OrderItemDTO> obtenerPorId(@PathVariable Long id) {
-        Optional<OrderItemDTO> dto = service.obtenerPorId(id);
-        return dto.map(ResponseEntity::ok)
-                  .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
+    // POST /ordenes/{ordenId}/items
     @PostMapping
-    public ResponseEntity<OrderItemDTO> crear(@RequestBody OrderItemDTO dto) {
+    public ResponseEntity<OrderItemDTO> agregarItem(
+            @PathVariable Long ordenId,
+            @RequestBody OrderItemDTO dto) {
+        dto.setOrderId(ordenId);
         return ResponseEntity.ok(service.guardar(dto));
     }
 
+    // PUT /ordenes/{ordenId}/items/{id}
     @PutMapping("/{id}")
-    public ResponseEntity<OrderItemDTO> actualizar(@PathVariable Long id, @RequestBody OrderItemDTO dto) {
+    public ResponseEntity<OrderItemDTO> actualizarItem(
+            @PathVariable Long ordenId,
+            @PathVariable Long id,
+            @RequestBody OrderItemDTO dto) {
+        dto.setOrderId(ordenId);
         return ResponseEntity.ok(service.actualizar(id, dto));
     }
 
+    // DELETE /ordenes/{ordenId}/items/{id}
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminarItem(
+            @PathVariable Long ordenId,
+            @PathVariable Long id) {
+        // opcional: podrías validar que el item pertenece a esa ordenId
         if (service.eliminar(id)) {
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 }

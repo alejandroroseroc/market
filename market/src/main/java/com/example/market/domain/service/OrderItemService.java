@@ -13,25 +13,29 @@ import com.example.market.domain.repository.IOrderItem;
 public class OrderItemService {
 
     @Autowired
-    private IOrderItem repository;
+    private IOrderItem repo;
 
     public List<OrderItemDTO> obtenerTodo() {
-        return repository.getAll();
+        return repo.getAll();
     }
 
     public Optional<OrderItemDTO> obtenerPorId(Long id) {
-        return repository.getById(id);
+        return repo.getById(id);
+    }
+
+    public List<OrderItemDTO> obtenerPorOrden(Long ordenId) {
+        return repo.getByOrderId(ordenId);
     }
 
     public OrderItemDTO guardar(OrderItemDTO dto) {
-        return repository.save(dto);
+        return repo.save(dto);
     }
 
     public OrderItemDTO actualizar(Long id, OrderItemDTO dto) {
-        return repository.update(id, dto);
+        return repo.update(id, dto);
     }
 
     public boolean eliminar(Long id) {
-        return repository.delete(id);
+        return repo.delete(id);
     }
 }

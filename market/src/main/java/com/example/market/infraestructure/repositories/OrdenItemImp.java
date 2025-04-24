@@ -16,42 +16,46 @@ import com.example.market.infraestructure.mapper.OrdenItemMapper;
 public class OrdenItemImp implements IOrderItem {
 
     @Autowired
-    private OrdenItemRepository ordenItemRepository;
+    private OrdenItemRepository repos;
 
     @Autowired
-    private OrdenItemMapper ordenItemMapper;
+    private OrdenItemMapper mapper;
 
     @Override
     public List<OrderItemDTO> getAll() {
-        return ordenItemMapper.toOrderItemsDTO(ordenItemRepository.findAll());
+        return mapper.toOrderItemsDTO(repos.findAll());
     }
 
     @Override
     public Optional<OrderItemDTO> getById(Long id) {
-        return ordenItemRepository.findById(id)
-                .map(ordenItemMapper::toOrderItemDTO);
+        return repos.findById(id).map(mapper::toOrderItemDTO);
+    }
+
+    @Override
+    public List<OrderItemDTO> getByOrderId(Long ordenId) {
+        return mapper.toOrderItemsDTO(repos.findByOrdenId(ordenId));
     }
 
     @Override
     public OrderItemDTO save(OrderItemDTO dto) {
-        OrdenItem entity = ordenItemMapper.toOrdenItem(dto);
-        return ordenItemMapper.toOrderItemDTO(ordenItemRepository.save(entity));
+        OrdenItem entity = mapper.toOrdenItem(dto);
+        return mapper.toOrderItemDTO(repos.save(entity));
     }
 
     @Override
     public OrderItemDTO update(Long id, OrderItemDTO dto) {
-        if (ordenItemRepository.existsById(id)) {
-            OrdenItem entity = ordenItemMapper.toOrdenItem(dto);
+        if (repos.existsById(id)) {
+            OrdenItem entity = mapper.toOrdenItem(dto);
             entity.setId(id);
-            return ordenItemMapper.toOrderItemDTO(ordenItemRepository.save(entity));
+            return mapper.toOrderItemDTO(repos.save(entity));
         }
         return null;
     }
 
     @Override
     public boolean delete(Long id) {
-        if (ordenItemRepository.existsById(id)) {
-            ordenItemRepository.deleteById(id);
+        if (repos.existsById(id)) {
+            repos.deleteById(id);
             return true;
         }
         return false;

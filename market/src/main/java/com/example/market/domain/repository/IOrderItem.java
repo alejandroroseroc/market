@@ -8,8 +8,8 @@ import com.example.market.domain.dto.OrderItemDTO;
 public interface IOrderItem {
     List<OrderItemDTO> getAll();
     Optional<OrderItemDTO> getById(Long id);
+    List<OrderItemDTO> getByOrderId(Long ordenId);    
     OrderItemDTO save(OrderItemDTO orderItemDTO);
     OrderItemDTO update(Long id, OrderItemDTO orderItemDTO);
     boolean delete(Long id);
-    
 }
